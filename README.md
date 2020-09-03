@@ -11,7 +11,7 @@
 | first_name       | string | null: false |
 | family_name_ruby | string | null: false |
 | first_name_ruby  | string | null: false |
-| birthday         | string | null: false |
+| birthday         | date   | null: false |
 
 
 ### Association
@@ -21,19 +21,27 @@
 
 ## items テーブル
 
-| Column   | Type       | Options                        |
-| ---------| ---------- | ------------------------------ |
-| item     | string     | null: false                    |
-| user     | references | null: false, foreign_key: true |
-| category | string     | null: false                    |
-| status   | string     | null: false                    |
-| price    | integer    | null: false                    |
+| Column        | Type       | Options                        |
+| --------------| ---------- | ------------------------------ |
+| item          | string     | null: false                    |
+| user          | references | null: false, foreign_key: true |
+| category      | integer    | null: false                    |
+| status        | integer    | null: false                    |
+| price         | integer    | null: false                    |
+| delivery_fee  | integer    | null: false                    |
+| prefecture    | integer    | null: false                    |
+| shipping_date | integer    | null: false                    |
 
 
 ### Association
 
 - belongs_to :user
 - has_one :order
+- belongs_to_active_hash :category
+- belongs_to_active_hash :status
+- belongs_to_active_hash :delivery_fee
+- belongs_to_active_hash :prefecture
+- belongs_to_active_hash :shipping_date
 
 ## orders テーブル
 
