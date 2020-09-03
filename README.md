@@ -9,8 +9,8 @@
 | password         | string | null: false |
 | family_name      | string | null: false |
 | first_name       | string | null: false |
-| family_name_ruby | string | null: false |
-| first_name_ruby  | string | null: false |
+| family_name_kana | string | null: false |
+| first_name_kana  | string | null: false |
 | birthday         | date   | null: false |
 
 
@@ -23,7 +23,7 @@
 
 | Column           | Type       | Options                        |
 | -----------------| ---------- | ------------------------------ |
-| item             | string     | null: false                    |
+| name             | string     | null: false                    |
 | detail           | text       | null: false                    |
 | user             | references | null: false, foreign_key: true |
 | category_id      | integer    | null: false                    |
@@ -49,7 +49,7 @@
 | Column | Type       | Options                        |
 | ------ | ---------- | ------------------------------ |
 | user   | references | null: false, foreign_key: true |
-| item   | references | null: false, foreign_key: true |
+| name   | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -61,11 +61,11 @@
 
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
-| phone        | integer    | null: false                    |
+| phone        | string     | null: false                    |
 | building     | string     |                                |
 | address_line | string     | null: false                    |
 | city         | string     | null: false                    |
-| postal_code  | integer    | null: false                    |
+| postal_code  | string     | null: false                    |
 | order        | references | null: false, foreign_key: true |
 
 ### Association
