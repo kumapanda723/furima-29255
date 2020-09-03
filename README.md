@@ -21,16 +21,16 @@
 
 ## items テーブル
 
-| Column        | Type       | Options                        |
-| --------------| ---------- | ------------------------------ |
-| item          | string     | null: false                    |
-| user          | references | null: false, foreign_key: true |
-| category      | integer    | null: false                    |
-| status        | integer    | null: false                    |
-| price         | integer    | null: false                    |
-| delivery_fee  | integer    | null: false                    |
-| prefecture    | integer    | null: false                    |
-| shipping_date | integer    | null: false                    |
+| Column           | Type       | Options                        |
+| -----------------| ---------- | ------------------------------ |
+| item             | string     | null: false                    |
+| user             | references | null: false, foreign_key: true |
+| category_id      | integer    | null: false                    |
+| status_id        | integer    | null: false                    |
+| price            | integer    | null: false                    |
+| delivery_fee_id  | integer    | null: false                    |
+| prefecture_id    | integer    | null: false                    |
+| shipping_date_id | integer    | null: false                    |
 
 
 ### Association
