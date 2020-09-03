@@ -4,10 +4,12 @@
 
 | Column   | Type   | Options     |
 | -------- | ------ | ----------- |
-| name     | string | null: false |
+| nickname | string | null: false |
 | email    | string | null: false |
 | password | string | null: false |
-| id       | string | null: false |
+| name     | string | null: false |
+| birthday | string | null: false |
+
 
 ### Association
 
@@ -16,12 +18,18 @@
 
 ## items テーブル
 
-| Column   | Type       | Options                        |
-| -------- | ---------- | ------------------------------ |
-| product  | string     | null: false                    |
-| category | string     | null: false                    |
-| price    | string     | null: false                    |
-| user     | references | null: false, foreign_key: true |
+| Column        | Type       | Options                        |
+| --------------| ---------- | ------------------------------ |
+| product       | string     | null: false                    |
+| picture       | string     | null: false                    |
+| user          | references | null: false, foreign_key: true |
+| category      | string     | null: false                    |
+| status        | string     | null: false                    |
+| price         | string     | null: false                    |
+| delivery_fee  | string     | null: false                    |
+| prefecture    | references | null: false, foreign_key: true |
+| shipping_date | string     | null: false                    |
+
 
 ### Association
 
@@ -35,7 +43,7 @@
 | user    | references | null: false, foreign_key: true |
 | product | references | null: false, foreign_key: true |
 | price   | references | null: false, foreign_key: true |
-| user    | references | null: false, foreign_key: true |
+| card    | string     | null: false                    |
 
 ### Association
 
@@ -46,11 +54,12 @@
 
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
-| address_line | string     |                                |
-| city         | references | null: false, foreign_key: true |
-| prefecture   | references | null: false, foreign_key: true |
-| country      | references | null: false, foreign_key: true |
-| postal_code  | references | null: false, foreign_key: true |
+| phone        | string     | null: false                    |
+| building     | string     |                                |
+| address_line | string     | null: false                    |
+| city         | string     | null: false                    |
+| prefecture   | string     | null: false                    |
+| postal_code  | string     | null: false                    |
 | user         | references | null: false, foreign_key: true |
 
 ### Association
