@@ -2,13 +2,16 @@
 
 ## users テーブル
 
-| Column   | Type   | Options     |
-| -------- | ------ | ----------- |
-| nickname | string | null: false |
-| email    | string | null: false |
-| password | string | null: false |
-| name     | string | null: false |
-| birthday | string | null: false |
+| Column           | Type   | Options     |
+| ---------------- | ------ | ----------- |
+| nickname         | string | null: false |
+| email            | string | null: false |
+| password         | string | null: false |
+| family_name      | string | null: false |
+| first_name       | string | null: false |
+| family_name_ruby | string | null: false |
+| first_name_ruby  | string | null: false |
+| birthday         | string | null: false |
 
 
 ### Association
@@ -18,17 +21,13 @@
 
 ## items テーブル
 
-| Column        | Type       | Options                        |
-| --------------| ---------- | ------------------------------ |
-| product       | string     | null: false                    |
-| picture       | string     | null: false                    |
-| user          | references | null: false, foreign_key: true |
-| category      | string     | null: false                    |
-| status        | string     | null: false                    |
-| price         | string     | null: false                    |
-| delivery_fee  | string     | null: false                    |
-| prefecture    | references | null: false, foreign_key: true |
-| shipping_date | string     | null: false                    |
+| Column   | Type       | Options                        |
+| ---------| ---------- | ------------------------------ |
+| item     | string     | null: false                    |
+| user     | references | null: false, foreign_key: true |
+| category | string     | null: false                    |
+| status   | string     | null: false                    |
+| price    | integer    | null: false                    |
 
 
 ### Association
@@ -38,29 +37,27 @@
 
 ## orders テーブル
 
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| user    | references | null: false, foreign_key: true |
-| product | references | null: false, foreign_key: true |
-| price   | references | null: false, foreign_key: true |
-| card    | string     | null: false                    |
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
+- belongs_to :item
 - has_one :address
 
 ## addresses テーブル
 
 | Column       | Type       | Options                        |
 | ------------ | ---------- | ------------------------------ |
-| phone        | string     | null: false                    |
+| phone        | integer    | null: false                    |
 | building     | string     |                                |
 | address_line | string     | null: false                    |
 | city         | string     | null: false                    |
-| prefecture   | string     | null: false                    |
-| postal_code  | string     | null: false                    |
-| user         | references | null: false, foreign_key: true |
+| postal_code  | integer    | null: false                    |
+| order        | references | null: false, foreign_key: true |
 
 ### Association
 
