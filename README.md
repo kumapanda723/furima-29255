@@ -24,6 +24,7 @@
 | Column           | Type       | Options                        |
 | -----------------| ---------- | ------------------------------ |
 | item             | string     | null: false                    |
+| detail           | text       |                                |
 | user             | references | null: false, foreign_key: true |
 | category_id      | integer    | null: false                    |
 | status_id        | integer    | null: false                    |
