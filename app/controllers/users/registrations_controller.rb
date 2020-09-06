@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to :root #成功の場合
-    else        
-      render 'new' #失敗の場合 
+      redirect_to :root # 成功の場合
+    else
+      render 'new' # 失敗の場合
     end
   end
   # before_action :configure_sign_up_params, only: [:create]
