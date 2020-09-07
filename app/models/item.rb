@@ -11,10 +11,12 @@ class Item < ApplicationRecord
     validates :delivery_fee_id
     validates :prefecture_id
     validates :shipping_date_id
+    validates :img
   end
 
   belongs_to :user
   has_one :order
+  has_one_attached :img
   
   extend ActiveHash::Associations::ActiveRecordExtensions
     belongs_to_active_hash :category
