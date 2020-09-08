@@ -1,8 +1,8 @@
 class Item < ApplicationRecord
 
   with_options presence: true do
-    validates :name
-    validates :detail
+    validates :name, length: {maximum: 40}
+    validates :detail, length: {maximum: 1000}
     validates :user
     validates :category_id, numericality: { other_than: 0, message: 'Select' } 
     validates :status_id, numericality: { other_than: 0, message: 'Select' }  
