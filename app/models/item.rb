@@ -7,7 +7,7 @@ class Item < ApplicationRecord
     validates :category_id, numericality: { other_than: 0, message: 'Select' } 
     validates :status_id, numericality: { other_than: 0, message: 'Select' }  
     validates :price, format: { with: /\A[0-9]+\z/, message: 'Half-width number' },
-                      numericality: { only_integer: true, greater_than: 299, less_than: 10000000, message: 'Out of setting range' }
+                      numericality: { only_integer: true, greater_than: 299, less_than: 10000000 , message: 'Out of setting range'}
     validates :delivery_fee_id, numericality: { other_than: 0, message: 'Select' } 
     validates :prefecture_id, numericality: { other_than: 0, message: 'Select' } 
     validates :shipping_date_id, numericality: { other_than: 0, message: 'Select' } 
