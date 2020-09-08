@@ -6,10 +6,10 @@ class User < ApplicationRecord
 
   with_options presence: true do
     validates :nickname
-    validates :email,uniqueness: true
-    validates :password,length: { minimum: 6 },
-                        confirmation: true,
-                        format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,}+\z/i,message: 'Include both letters and numbers' }
+    validates :email, uniqueness: true
+    validates :password, length: { minimum: 6 },
+                         confirmation: true,
+                         format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,}+\z/i, message: 'Include both letters and numbers' }
     validates :birthday
   end
 
