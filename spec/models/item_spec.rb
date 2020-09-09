@@ -27,8 +27,18 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include('Category Select')
     end
+    it 'category_idが0であると登録できない' do
+      @item.category_id = 0
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Category Select')
+    end
     it '商品の状態についての情報が必須であること' do
       @item.status_id = ''
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Status Select')
+    end
+    it 'status_idが0であると登録できない' do
+      @item.status_id = 0
       @item.valid?
       expect(@item.errors.full_messages).to include('Status Select')
     end
@@ -37,13 +47,28 @@ RSpec.describe Item, type: :model do
       @item.valid?
       expect(@item.errors.full_messages).to include('Delivery fee Select')
     end
+    it 'delivery_fee_idが0であると登録できない' do
+      @item.delivery_fee_id = 0
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Delivery fee Select')
+    end
     it '発送元の地域についての情報が必須であること' do
       @item.prefecture_id = ''
       @item.valid?
       expect(@item.errors.full_messages).to include('Prefecture Select')
     end
+    it 'prefecture_idが0であると登録できない' do
+      @item.prefecture_id = 0
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Prefecture Select')
+    end
     it '発送までの日数についての情報が必須であること' do
       @item.shipping_date_id = ''
+      @item.valid?
+      expect(@item.errors.full_messages).to include('Shipping date Select')
+    end
+    it 'shipping_date_idが0であると登録できない' do
+      @item.shipping_date_id = 0
       @item.valid?
       expect(@item.errors.full_messages).to include('Shipping date Select')
     end
@@ -66,6 +91,9 @@ RSpec.describe Item, type: :model do
       @item.price = 'あああ'
       @item.valid?
       expect(@item.errors.full_messages).to include('Price Out of setting range')
+    end
+    it '全ての情報が正しく入力されていれば商品出品が完了する' do
+      expect(@item).to be_valid
     end
   end
 end
