@@ -124,12 +124,12 @@
   <%# 商品一覧 %>
   <div class='item-contents'>
     <h2 class='title'>ピックアップカテゴリー</h2>
-    <%= link_to '新規投稿商品', "#", class: "subtitle" %>
+    <%= link_to '新規出品', "/items/new", class: "subtitle" %>
     <ul class='item-lists'>
 
       <li class='list'>
       <% @items.each do |item|%>
-        <%= link_to "#" do %>
+        <%= link_to item_path(item.id) do %>
         <div class='item-img-content'>
           <%= image_tag item.img, class: "item-img" %>
 
@@ -145,7 +145,7 @@
             <%= item.name %>
           </h3>
           <div class='item-price'>
-            <span><%= "販売価格" %><%= item.price %>円<br>(税込み)</span>
+            <span><%= item.price %>円<br>(税込み)</span>
             <div class='star-btn'>
               <%= image_tag "star.png", class:"star-icon" %>
               <span class='star-count'>0</span>
