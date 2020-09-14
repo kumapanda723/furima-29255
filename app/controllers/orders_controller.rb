@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :move_to_index, except: [:index, :show]
+  before_action :authenticate_user!
 
   def new
   end
@@ -33,6 +35,10 @@ class OrdersController < ApplicationController
       card: order_params[:token],
       currency:'jpy'
     )
+  end
+
+  def move_to_index
+    redirect_to action: :index unless user_signed_in?
   end
 
 end
