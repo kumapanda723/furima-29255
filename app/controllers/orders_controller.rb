@@ -1,15 +1,19 @@
 class OrdersController < ApplicationController
 
+  def new
+  end
+  
   def index
     @item = Item.find(params[:item_id])
+    @order = OrderAddress.new
   end
 
   def create
     @item = Item.find(params[:item_id])
-    @order = Order.new(order_params)
+    @order = OrderAddress.new(order_params)
     if @order.valid?
       pay_item
-      @order.save1
+      @order.save
       return redirect_to root_path
     end
     render 'index'
@@ -18,7 +22,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.permit(:token, :user, :item)
+    params.permit(:token, :phone, :prefecture_id, :building, :address_line, :item_id, :city, :postal_code).merge(user_id: current_user.id)
   end
 
   def pay_item
