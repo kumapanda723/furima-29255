@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:index, :create, :pay_item]
-  before_action :move_to_root_path
-  before_action :move_to_self_path
+  before_action :move_to_sign_in
+  before_action :move_to_purchase
   before_action :authenticate_user!
 
   def new
@@ -41,14 +41,16 @@ class OrdersController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 
-  def move_to_root_path
-    redirect_to root_path unless user_signed_in?
+  def move_to_sign_in
+    redirect_to new_user_session_path unless user_signed_in?
   end
 
-  def move_to_self_path
-    redirect_to root_path unless current_user.id != @item.user_id
+  def move_to_purchase
+    if @item.sold_status == 1 #売切の場合は詳細ページを表示（購入不可）
+      redirect_to item_path(@item.id)
+    else @item.sold_status != 1 && current_user.id == @item.user_id #販売中、かつ出品商品の購入ページへその出品者がアクセスする際はトップページへ
+      redirect_to root_path
+    end
   end
-
-
 
 end
