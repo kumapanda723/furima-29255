@@ -16,6 +16,7 @@ class OrdersController < ApplicationController
     if @order.valid?
       pay_item
       @order.save
+      @item.update(sold_status:1)
       return redirect_to root_path
     end
     render 'index'
