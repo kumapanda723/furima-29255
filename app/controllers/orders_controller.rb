@@ -48,7 +48,7 @@ class OrdersController < ApplicationController
   def move_to_purchase
     if @item.sold_status == 1 #売切の場合は詳細ページを表示（購入不可）
       redirect_to item_path(@item.id)
-    else @item.sold_status != 1 && current_user.id == @item.user_id #販売中、かつ出品商品の購入ページへその出品者がアクセスする際はトップページへ
+    elsif @item.sold_status != 1 && current_user.id == @item.user_id #販売中、かつ出品商品の購入ページへその出品者がアクセスする際はトップページへ
       redirect_to root_path
     end
   end
