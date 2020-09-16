@@ -9,7 +9,7 @@ class OrderAddress
      validates :city
      validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/}
      validates :prefecture_id, numericality: { other_than: 0, message: 'Select' }
-     validates :token
+     validates :token, presence:{ message: 'of credit card is invalid' }
    end
 
   def save
