@@ -5,7 +5,7 @@ FactoryBot.define do
       city { Faker::Lorem.sentence }
       prefecture_id { Faker::Number.within(range: 1..47) }
       building { Faker::Lorem.sentence }
-      token { Faker::Number.number(digits:10) }
+      token { Faker::Number.number(digits:10)}
       postal_code { "170-0001" }
     end
 end
